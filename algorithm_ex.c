@@ -1,97 +1,98 @@
 /*
-½Ç±â : ´ë.¼Ò¹®ÀÚ ±¸ºÐ ¾øÀÌ ¾ËÆÄºªÀ» ÀÔ·ÂÇÏ¸é ´ë.¼Ò¹®ÀÚ¸¦ ÆÇº°ÇÏ¿© »çÀü ¼øÀ¸·Î Á¤·ÄÇÏ¿© Ãâ·ÂÇÏ´Â ÇÁ·Î±×·¥
-% ¹è¿­À» »ç¿ëÇÒ °æ¿ì
-1. ÀÔ·Â¹ÞÀ» ¹è¿­ÀÇ ÀÌ¸§Àº input_ary·Î ÇÑ´Ù
-2. ¹è¿­ÀÇ Å©±â´Â 10À¸·Î Á¤ÇÑ´Ù
-3. Á¤·Ä ¾Ë°í¸®ÁòÀº »ðÀÔÁ¤·ÄÀ» »ç¿ëÇÑ´Ù.
-4. »ðÀÔÁ¤·Ä ¾Ë°í¸®ÁòÀº ÇÔ¼ö·Î »ç¿ëÇÑ´Ù.
-5.¼Ò¹®ÀÚ ÀúÀå ¹è¿­ÀÌ¸§Àº lower_ary ·Î ÇÑ´Ù.
-6. ´ë¹®ÀÚ ÀúÀå ¹è¿­ ÀÌ¸§Àº upper_ary·Î ÇÑ´Ù.
+ì‹¤ê¸° : ëŒ€.ì†Œë¬¸ìž êµ¬ë¶„ ì—†ì´ ì•ŒíŒŒë²³ì„ ìž…ë ¥í•˜ë©´ ëŒ€.ì†Œë¬¸ìžë¥¼ íŒë³„í•˜ì—¬ ì‚¬ì „ ìˆœìœ¼ë¡œ ì •ë ¬í•˜ì—¬ ì¶œë ¥í•˜ëŠ” í”„ë¡œê·¸ëž¨
+% ë°°ì—´ì„ ì‚¬ìš©í•  ê²½ìš°
+1. ìž…ë ¥ë°›ì„ ë°°ì—´ì˜ ì´ë¦„ì€ input_aryë¡œ í•œë‹¤
+2. ë°°ì—´ì˜ í¬ê¸°ëŠ” 10ìœ¼ë¡œ ì •í•œë‹¤
+3. ì •ë ¬ ì•Œê³ ë¦¬ì¦˜ì€ ì‚½ìž…ì •ë ¬ì„ ì‚¬ìš©í•œë‹¤.
+4. ì‚½ìž…ì •ë ¬ ì•Œê³ ë¦¬ì¦˜ì€ í•¨ìˆ˜ë¡œ ì‚¬ìš©í•œë‹¤.
+5.ì†Œë¬¸ìž ì €ìž¥ ë°°ì—´ì´ë¦„ì€ lower_ary ë¡œ í•œë‹¤.
+6. ëŒ€ë¬¸ìž ì €ìž¥ ë°°ì—´ ì´ë¦„ì€ upper_aryë¡œ í•œë‹¤.
 
-#¿¬°á¸®½ºÆ®¸¦ »ç¿ëÇÒ °æ¿ì(°¡»êÁ¡ÀÌ ºÎ¿©µÈ´Ù)
-1. ÀÔ·Â¹ÞÀº ¹è¿­ÀÌ¸§Àº  input_ary·Î ÇÑ´Ù.
-2. ¹è¿­ÀÇ Å©±â´Â 10À¸·ÎÁ¤ÇÑ´Ù.
-3. Á¤·Ä ¾Ë°í¸®ÁòÀº »ðÀÔÁ¤·ÄÀ» »ç¿ëÇÑ´Ù.
+#ì—°ê²°ë¦¬ìŠ¤íŠ¸ë¥¼ ì‚¬ìš©í•  ê²½ìš°(ê°€ì‚°ì ì´ ë¶€ì—¬ëœë‹¤)
+1. ìž…ë ¥ë°›ì€ ë°°ì—´ì´ë¦„ì€  input_aryë¡œ í•œë‹¤.
+2. ë°°ì—´ì˜ í¬ê¸°ëŠ” 10ìœ¼ë¡œì •í•œë‹¤.
+3. ì •ë ¬ ì•Œê³ ë¦¬ì¦˜ì€ ì‚½ìž…ì •ë ¬ì„ ì‚¬ìš©í•œë‹¤.
 */
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
 
-void insertionSort(char* pary, int sz);							//ÇÔ¼ö È£Ãâ
+void insertionSort(char* pary, int sz);						//í•¨ìˆ˜ í˜¸ì¶œ
 
 int main()
 {
-	char input_ary[10];											//ÀÔ·Â¹Þ´Â ¹è¿­ 
-	char lower_ary[10] = { 0 };									//¼Ò¹®ÀÚ ¹è¿­
-	char upper_ary[10] = { 0 };									//´ë¹®ÀÚ ¹è¿­
-	int i = 0, j = 0,k=0;										//Æ÷¹®°ú ÀÌÇÁ¹®¿¡¼­ ¾µ º¯¼ö ¼±¾ð ÃÊ±âÈ­
+	char input_ary[10];							//ìž…ë ¥ë°›ëŠ” ë°°ì—´ 
+	char lower_ary[10] = { 0 };						//ì†Œë¬¸ìž ë°°ì—´
+	char upper_ary[10] = { 0 };						//ëŒ€ë¬¸ìž ë°°ì—´
+	int i = 0, j = 0,k=0;							//í¬ë¬¸ê³¼ ì´í”„ë¬¸ì—ì„œ ì“¸ ë³€ìˆ˜ ì„ ì–¸ ì´ˆê¸°í™”
 
 
 \
 
-	printf("10ÀÚ¸® ´ë¼Ò¹®ÀÚ ±¸ºÐ¾øÀÌ ÀÔ·ÂÇÏ¼¼¿ä.\n");
-	for (i = 0; i <10; i++)										//¹è¿­ ¹Ýº¹¹®Àº Æ÷¹®À¸·Î ¹è¿­¹æ °¹¼ö¸¸Å­ ½ÇÇà
+	printf("10ìžë¦¬ ëŒ€ì†Œë¬¸ìž êµ¬ë¶„ì—†ì´ ìž…ë ¥í•˜ì„¸ìš”.\n");
+	for (i = 0; i <10; i++)							//ë°°ì—´ ë°˜ë³µë¬¸ì€ í¬ë¬¸ìœ¼ë¡œ ë°°ì—´ë°© ê°¯ìˆ˜ë§Œí¼ ì‹¤í–‰
 	{
-		scanf("%c", &input_ary[i]);								//¹è¿­0¹øÂ° ¹æºÎÅÍ Æ÷¹®À¸·Î ¹Ýº¹ÇØ¼­ ¿­¹ø±îÁö ½ÇÇà
+		scanf("%c", &input_ary[i]);					//ë°°ì—´0ë²ˆì§¸ ë°©ë¶€í„° í¬ë¬¸ìœ¼ë¡œ ë°˜ë³µí•´ì„œ ì—´ë²ˆê¹Œì§€ ì‹¤í–‰
 		getchar();
 	}
-	for (i = 0; i < 10; i++)									//¸î¹øÂ° ¹è¿­¹æ¿¡ µé¾î°¡´ÂÁö È®ÀÎ
+	for (i = 0; i < 10; i++)						//ëª‡ë²ˆì§¸ ë°°ì—´ë°©ì— ë“¤ì–´ê°€ëŠ”ì§€ í™•ì¸
 	{											
-		printf("input_ary[%d]¹øÂ°\t%c\n", i, input_ary[i]);
+		printf("input_ary[%d]ë²ˆì§¸\t%c\n", i, input_ary[i]);
 	}
 	
-	int size = sizeof(input_ary) / sizeof(input_ary[0]);		//ÀÔ·Â¹ÞÀº °ª Å©±â È®ÀÎ
+	int size = sizeof(input_ary) / sizeof(input_ary[0]);			//ìž…ë ¥ë°›ì€ ê°’ í¬ê¸° í™•ì¸
 
-	for (i = 0; i < size;i++)									//Å©±â¸¸Å­ ¹Ýº¹¹®À¸·Î Á¶°Ç °Ë»ö
+	for (i = 0; i < size;i++)						//í¬ê¸°ë§Œí¼ ë°˜ë³µë¬¸ìœ¼ë¡œ ì¡°ê±´ ê²€ìƒ‰
 	{
-		if ((input_ary[i] >= 'A') && (input_ary[i] <= 'Z'))		// ´ë¹®ÀÚ
+		if ((input_ary[i] >= 'A') && (input_ary[i] <= 'Z'))		// ëŒ€ë¬¸ìž
 		{
-			upper_ary[j] = input_ary[i];						//upper_ary °ª¿¡ ´ëÀÔ
-			j++;												//½ÇÇà µÉ´ë¸¶´Ù Ä«¿îÅÍ (upper_ary »çÀÌÁî °ªÀÌµÈ´Ù)
+			upper_ary[j] = input_ary[i];				//upper_ary ê°’ì— ëŒ€ìž…
+			j++;							//ì‹¤í–‰ ë ëŒ€ë§ˆë‹¤ ì¹´ìš´í„° (upper_ary ì‚¬ì´ì¦ˆ ê°’ì´ëœë‹¤)
 		}	
-		else if ((input_ary[i] >= 'a') && (input_ary[i] <= 'z')) // ¼Ò¹®ÀÚ
+		else if ((input_ary[i] >= 'a') && (input_ary[i] <= 'z')) 	// ì†Œë¬¸ìž
 		{
-			lower_ary[k]= input_ary[i];							//lower_ary °ª¿¡ ´ëÀÔ
-			k++;												//½ÇÇà µÉ´ë¸¶´Ù Ä«¿îÅÍ (lower_ary »çÀÌÁî °ªÀÌµÈ´Ù)
+			lower_ary[k]= input_ary[i];				//lower_ary ê°’ì— ëŒ€ìž…
+			k++;							//ì‹¤í–‰ ë ëŒ€ë§ˆë‹¤ ì¹´ìš´í„° (lower_ary ì‚¬ì´ì¦ˆ ê°’ì´ëœë‹¤)
 		}
 	}
-	//insertionSort(input_ary, size);							//ÀÔ·ÂÇÑ ¹è¿­ Á¤·Ä ¹× È®ÀÎ (½ÇÇàÇÒ ÇÊ¿äX)
+	//insertionSort(input_ary, size);					//ìž…ë ¥í•œ ë°°ì—´ ì •ë ¬ ë° í™•ì¸ (ì‹¤í–‰í•  í•„ìš”X)
 	printf("\n");
 	
 	/*
-	for (i = 0; i < j; i++) {									//upper_ary Àß µé¾î°¬´ÂÁö È®ÀÎ
+	for (i = 0; i < j; i++) {						//upper_ary ìž˜ ë“¤ì–´ê°”ëŠ”ì§€ í™•ì¸
 		printf("%c ", upper_ary[i]);
 	}
 	*/
-	//	int size1 = sizeof(upper_ary) / sizeof(upper_ary[0]);	//upper_ary »çÀÌÁî¸¦ Á¤ÀÇ À§¿¡ 10ÀÌ¶ó°í ÁáÁö¸¸ ÇÔ¼ö¾È¿¡ ±»ÀÌ º¯¼ö·Î ³Ö°Ú´Ù¸é Á¤ÀÇÇØÁà¾ßÇÔ
-	//insertionSort(upper_ary, size1);							//À§ÀÇ »çÀÌÁî Á¤ÀÇ¸¦ ¹è°í ¼ýÀÚ·Î 10³Ö¾îµµ ¹«°ü ¼±¾ðÀ» 10À¸·Î ÇØÁá±â ¶§¹®
-	printf("upper_ary ¹è¿­ :");
-	insertionSort(upper_ary, j);								//»ðÀÔÁ¤·Ä ÇÔ¼ö¿¡¼­ upper_ary¹è¿­À» Ä«¿îÅÍÇÑ j±îÁö 
+	//	int size1 = sizeof(upper_ary) / sizeof(upper_ary[0]);		//upper_ary ì‚¬ì´ì¦ˆë¥¼ ì •ì˜ ìœ„ì— 10ì´ë¼ê³  ì¤¬ì§€ë§Œ í•¨ìˆ˜ì•ˆì— êµ³ì´ ë³€ìˆ˜ë¡œ ë„£ê² ë‹¤ë©´ ì •ì˜í•´ì¤˜ì•¼í•¨
+	//insertionSort(upper_ary, size1);					//ìœ„ì˜ ì‚¬ì´ì¦ˆ ì •ì˜ë¥¼ ë°°ê³  ìˆ«ìžë¡œ 10ë„£ì–´ë„ ë¬´ê´€ ì„ ì–¸ì„ 10ìœ¼ë¡œ í•´ì¤¬ê¸° ë•Œë¬¸
+	printf("upper_ary ë°°ì—´ :");
+	
+	insertionSort(upper_ary, j);						//ì‚½ìž…ì •ë ¬ í•¨ìˆ˜ì—ì„œ upper_aryë°°ì—´ì„ ì¹´ìš´í„°í•œ jê¹Œì§€ 
 
 	/*
 	for (i = 0; i < k; i++) {
-		printf("%c ", lower_ary[i]);							//lower_ary Àß µé¾î°¬´ÂÁö È®ÀÎ
+		printf("%c ", lower_ary[i]);					//lower_ary ìž˜ ë“¤ì–´ê°”ëŠ”ì§€ í™•ì¸
 	}
 	*/
 //	int size2 = sizeof(lower_ary) / sizeof(lower_ary[0]);	
 //	insertionSort(lower_ary, size2);	
-	printf("lower_ary ¹è¿­ : ");
-	insertionSort(lower_ary, k);								//»ðÀÔÁ¤·Ä ÇÔ¼ö¿¡¼­ lower_ary¹è¿­À» Ä«¿îÅÍÇÑ j±îÁö 
+	printf("lower_ary ë°°ì—´ : ");
+	insertionSort(lower_ary, k);						//ì‚½ìž…ì •ë ¬ í•¨ìˆ˜ì—ì„œ lower_aryë°°ì—´ì„ ì¹´ìš´í„°í•œ jê¹Œì§€ 
 
 	
 	return 0;
 }
-void insertionSort(char* pary, int sz)							//»ðÀÔÁ¤·Ä ÇÔ¼ö 
+void insertionSort(char* pary, int sz)						//ì‚½ìž…ì •ë ¬ í•¨ìˆ˜ 
 {
 
 	int i, j, temp;
-	for (i = 1; i < sz; i++) {									//µÎ¹øÂ° ÀÎµ¦½º¸¦ Å°°ªÀ¸·Î Ã¹¹øÂ° ÀÎµ¦½º °ª°ú ºñ±³
+	for (i = 1; i < sz; i++) {						//ë‘ë²ˆì§¸ ì¸ë±ìŠ¤ë¥¼ í‚¤ê°’ìœ¼ë¡œ ì²«ë²ˆì§¸ ì¸ë±ìŠ¤ ê°’ê³¼ ë¹„êµ
 
-		for (j = i; j > 0; j--)									// Â÷·Ê´ë·Î ÁøÇàµÇ¸é¼­ Á¤·ÄÇÏ´Â ¹Ýº¹¹®
+		for (j = i; j > 0; j--)						// ì°¨ë¡€ëŒ€ë¡œ ì§„í–‰ë˜ë©´ì„œ ì •ë ¬í•˜ëŠ” ë°˜ë³µë¬¸
 		{
-			if (pary[j - 1] > pary[j])							//¾Õ¿¡ ÀÖ´Â °ªÀÌ Å« °æ¿ì¿¡ ÀÚ¸® ¹Ù²ÞÀ» ÇÑ´Ù.
+			if (pary[j - 1] > pary[j])				//ì•žì— ìžˆëŠ” ê°’ì´ í° ê²½ìš°ì— ìžë¦¬ ë°”ê¿ˆì„ í•œë‹¤.
 			{
-				temp = pary[j];									//½º¿Ò °ø½Ä
+				temp = pary[j];					//ìŠ¤ì™‘ ê³µì‹
 				pary[j] = pary[j - 1];
 				pary[j - 1] = temp;
 			}
@@ -99,7 +100,7 @@ void insertionSort(char* pary, int sz)							//»ðÀÔÁ¤·Ä ÇÔ¼ö
 	}
 	for (j = 0; j < sz; j++)
 	{
-	//	if(pary[j] != NULL)												//°¢ ´ë¹®ÀÚ¹è¿­ ¼Ò¹®ÀÚ ¹è¿­À» ÀÎ¼³Æ®¼ÖÆ® ÇÔ¼ö¿¡ »çÀÌÁî·Î »ç¿ëÇÒ½Ã ³Î°ª Á¦¿ÜÇÏ°í Ãâ·Â
+	//	if(pary[j] != NULL)												//ê° ëŒ€ë¬¸ìžë°°ì—´ ì†Œë¬¸ìž ë°°ì—´ì„ ì¸ì„¤íŠ¸ì†”íŠ¸ í•¨ìˆ˜ì— ì‚¬ì´ì¦ˆë¡œ ì‚¬ìš©í• ì‹œ ë„ê°’ ì œì™¸í•˜ê³  ì¶œë ¥
 		printf("%c  ", pary[j]);
 	}
 }
