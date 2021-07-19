@@ -100,7 +100,7 @@ void insertionSort(char* pary, int sz)						//삽입정렬 함수
 	}
 	for (j = 0; j < sz; j++)
 	{
-	//	if(pary[j] != NULL)												//각 대문자배열 소문자 배열을 인설트솔트 함수에 사이즈로 사용할시 널값 제외하고 출력
+		//if(pary[j] != NULL)						//각 대문자배열 소문자 배열을 인설트솔트 함수에 사이즈로 사용할시 널값 제외하고 출력
 		printf("%c  ", pary[j]);
 	}
 }
